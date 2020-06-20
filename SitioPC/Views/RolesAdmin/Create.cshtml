@@ -1,0 +1,38 @@
+﻿@model IdentitySample.Models.RoleViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+    <div class="p-3 text-white">
+        <h2>Crear nuevo rol</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal p-3">
+        @Html.ValidationSummary(true)
+
+        <div class="">
+            @*Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })*@
+            <label>Nombre del rol</label>
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control " })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="pt-2 float-left pr-1">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="pt-2">
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-info" })
+        </div>
+    </div>
+        }
+        
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

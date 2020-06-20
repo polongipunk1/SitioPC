@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <title>MundoPC</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/estilos.css")
+    @Styles.Render("~/Img/png")
+    @Styles.Render("~/Img/jpg")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="fondo-login">  
+    <nav class="navbar navbar-expand-xl navbar-dark text-white sticky-top bgnav">
+        <a href='@Url.Action("Index","Home")' class="navbar-brand text-white font-weight-bold shadow-logo text-danger">MundoPC</a>
+        <button class="navbar-toggler btn-outline-secondary" data-target="#menu" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon align-items-center"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mr-auto layout">
+                <li class="nav-item active"><a href='@Url.Action("Register","Account")' class="text-white nav-link hoverli">Productos</a></li>
+                <li class="nav-item active"><a href='@Url.Action("Login","Account")' class="text-white nav-link hoverli">Mis compras</a></li>
+                <li class="nav-item active"><a href='@Url.Action("Index","Home")' class="text-white nav-link voverli">Carrito</a></li>
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">RolesAdmin</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">UsersAdmin</a></li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    @RenderBody()
+    <div class="shadow-lg pt-4">
+        <footer class="footer text-center text-light">
+            <p>MundoPC &copy; @DateTime.Now.Year - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

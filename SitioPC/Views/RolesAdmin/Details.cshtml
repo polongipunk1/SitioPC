@@ -1,0 +1,47 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Details";
+}
+    <div class="p-3 text-white">
+        <h2>Detalle del rol</h2>
+
+        <div>
+            <dl class="p-3">
+                <dt class="text-danger float-left pr-3">
+                    @*Html.DisplayNameFor(model => model.Name)*@
+                    <label>Nombre del rol:</label>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div>
+
+        <h4>Lista de usuarios en este rol</h4>
+        @if (ViewBag.UserCount == 0)
+        {
+            <hr />
+            <p>No se encontraron usuarios en este rol.</p>
+        }
+
+        <table class="table table-hover table-responsive-sm table-striped table-light table-borderless w-25">
+
+            @foreach (var item in ViewBag.Users)
+            {
+                <tr>
+                    <td>
+                        @item.UserName
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="pt-2 float-left pr-3">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new{ @class = "btn btn-outline-warning" })
+        </div>
+        <div class="pt-2">
+            @Html.ActionLink("Regresar", "Index",null, new { @class = "btn btn-outline-info" })
+        </div>
+    </div>
+
+

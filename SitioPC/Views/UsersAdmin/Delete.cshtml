@@ -1,0 +1,38 @@
+﻿@model IdentitySample.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="p-3 text-white">
+    <h2 class="text-warning">Eliminar</h2>
+
+    <h3 class="text-danger">¿Seguro que quieres eliminar a este usuario?</h3>
+    <div>
+
+        <dl class="p-3">
+            <dt class="text-danger float-left pr-3">
+                @*Html.DisplayNameFor(model => model.UserName)*@
+                <label>Nombre de usario:</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="pt-2 float-left pr-1">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Eliminar usuario" class="btn btn-danger" />
+                </div>
+            </div>
+            <div class="pt-2">
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-info" })
+            </div>
+        }
+    </div>
+</div>

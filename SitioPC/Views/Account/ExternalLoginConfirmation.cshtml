@@ -1,0 +1,127 @@
+﻿@model IdentitySample.Models.ExternalLoginConfirmationViewModel
+@{
+    var listado = new List<SelectListItem>() {
+        new SelectListItem()
+        {
+            Text = "Ciudad de México",
+            Value = "Ciudad de México"
+        },
+        new SelectListItem()
+        {
+            Text = "Estado de México",
+            Value = "Estado de México",
+        }
+    };
+}
+<div class="container-fluid text-white text-center pt-4">
+    <div class="row mt-5 justify-content-center align-items-center">
+        <div class="col-sm-4 text-center">
+            <div class="col-12 user-img">
+                <img src="~/img/avatar.png" alt="">
+                <h3>Asocia tu cuenta de @ViewBag.LoginProvider</h3>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <section class="shadow-form pt-3">
+                        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>Formulario de asociación</h4>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <p class="text-info">
+                                Te has autenticado exitosamente con <strong>@ViewBag.LoginProvider</strong>.
+                                Ingrese los siguientes datos abligatorios para para finalizar el registro ya que estos le ayudaran al administrador para la entrega del producto .
+                            </p>
+                            <div class="">
+                                @Html.LabelFor(m => m.Nombre, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su nombre" })
+                                    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Apellidos, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese sus apellidos" })
+                                    @Html.ValidationMessageFor(m => m.Apellidos, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su correo electrónico" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su nombre de usuario" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                <label>Contraseña</label>
+                                <div class="col-md-12 mb-1">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese una contraseña" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div>
+                                <label>Confirmar contraseña</label>
+                                <div class="col-md-12 mb-4">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control text-center font-weight-bold", @placeholder = "Confirme su contraseña" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Direccion, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Direccion, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su dirección donde vive" })
+                                    @Html.ValidationMessageFor(m => m.Direccion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Colonia, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Colonia, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su colonia" })
+                                    @Html.ValidationMessageFor(m => m.Colonia, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Region, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.DropDownList("region", listado, new { @class = "btn btn-secondary dropdown-toggle col-md-12" })
+                                    @Html.ValidationMessageFor(m => m.Region, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.CP, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.CP, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ejemplo: 05320", pattern = "[0-9]+", MaxLength = "5", MinLength = "5" })
+                                    @Html.ValidationMessageFor(m => m.CP, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="">
+                                @Html.LabelFor(m => m.Telefono, new { @class = "col-md-12 control-label" })
+                                <div class="col-md-12 mb-1">
+                                    @Html.TextBoxFor(m => m.Telefono, new { @class = "form-control text-center font-weight-bold", placeholder = "10 digitos", pattern = "[0-9]+", MaxLength = "10", MinLength = "10" })
+                                    @Html.ValidationMessageFor(m => m.Telefono, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 pt-3">
+                                    <button type="submit" value="Registrarse" class="btn btn-primary btn-lg">Registrarse</button>
+                                </div>
+                            </div>
+                        }
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
