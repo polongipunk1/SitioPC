@@ -6,6 +6,12 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+//
+using System;
+using System.Collections.Generic;
+using System.Data;
+using SitioPC.Models;
+using SitioPC.ViewModels;
 
 namespace IdentitySample.Controllers
 {
@@ -51,10 +57,30 @@ namespace IdentitySample.Controllers
         //
         // GET: /Users/
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index(int pagina = 1)
         {
-            return View(await UserManager.Users.ToListAsync());
+            var cantidadRegistrosPorPagina = 5;
+            using (var db = new ApplicationDbContext())
+            { 
+                var personas = db.Users.OrderBy(x => x.Id)
+                        .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                        .Take(cantidadRegistrosPorPagina).ToList();
+            var totalDeRegistros = db.Users.Count();
+
+            var modelo = new IndexViewModelPag();
+            modelo.Personas = personas;
+            modelo.PaginaActual = pagina;
+            modelo.TotalDeRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;                      
+
+            return View(modelo);
+            }
         }
+        /*public async Task<ActionResult> Index()
+        {
+            
+            return View(await UserManager.Users.ToListAsync());
+        }*/
 
         //
         // GET: /Users/Details/5

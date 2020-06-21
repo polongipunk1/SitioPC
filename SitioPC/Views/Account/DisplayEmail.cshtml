@@ -1,11 +1,13 @@
 ﻿@{
-    ViewBag.Title = "DEMO purpose Email Link";
+    ViewBag.Title = "Enlace de correo electrónico de propósito DEMO.";
 }
-<h2>@ViewBag.Title.</h2>
-<p class="text-info">
-    Please check your email and confirm your email address.
-</p>
-<p class="text-danger">
-    For DEMO only: You can click this link to confirm the email: <a href="@ViewBag.Link">link</a>
-    Please change this code to register an email service in IdentityConfig to send an email.
-</p>
+    <div class="p-3 text-white">
+        <h2>@ViewBag.Title.</h2>
+        <p class="text-warning">
+            Por favor revise su correo electrónico y confirme su dirección de correo electrónico.
+        </p>
+        <p class="text-white">
+            Solo para DEMO: puede hacer clic en este enlace para confirmar el correo electrónico: <a href="@ViewBag.Link">link</a>
+            Cambie este código para registrar un servicio de correo electrónico en IdentityConfig para enviar un correo electrónico.
+        </p>
+    </div>
