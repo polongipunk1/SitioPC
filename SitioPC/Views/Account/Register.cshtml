@@ -27,7 +27,7 @@
                             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                @*Html.ValidationSummary("", new { @class = "text-danger" })*@
                                 <div class="">
                                     @Html.LabelFor(m => m.Nombre, new { @class = "col-md-12 control-label" })
                                     <div class="col-md-12 mb-1 font-weight-bold">

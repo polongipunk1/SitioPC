@@ -27,5 +27,11 @@ namespace IdentitySample.Controllers
 
             return View();
         }
+
+        [HttpGet, AllowAnonymous]
+        public ActionResult productos()
+        {
+            return View();
+        }
     }
 }

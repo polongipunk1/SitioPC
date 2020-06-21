@@ -23,7 +23,7 @@
                         @using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary("", new { @class = "text-error" })
+                            @*Html.ValidationSummary("", new { @class = "text-error" })*@
                             <div>
                                 @Html.LabelFor(m => m.Nombre, new { @class = "col-md-12 control-label" })
                                 <div class="col-md-12 mb-1">

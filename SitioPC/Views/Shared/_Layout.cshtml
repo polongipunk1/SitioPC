@@ -7,13 +7,13 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <title>MundoPC</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/estilos.css")
+    @Styles.Render("~/Content/estilos.css")    
     @Styles.Render("~/Img/png")
     @Styles.Render("~/Img/jpg")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body class="fondo-login">  
+<body class="fondo-body">  
     <nav class="navbar navbar-expand-xl navbar-dark text-white sticky-top bgnav">
         <a href='@Url.Action("Index","Home")' class="navbar-brand text-white font-weight-bold shadow-logo text-danger">MundoPC</a>
         <button class="navbar-toggler btn-outline-secondary" data-target="#menu" data-toggle="collapse" type="button">
@@ -21,15 +21,18 @@
         </button>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav mr-auto layout">
-                <li class="nav-item active"><a href='@Url.Action("Register","Account")' class="text-white nav-link hoverli">Productos</a></li>
-                <li class="nav-item active"><a href='@Url.Action("Login","Account")' class="text-white nav-link hoverli">Mis compras</a></li>
-                <li class="nav-item active"><a href='@Url.Action("Index","Home")' class="text-white nav-link voverli">Carrito</a></li>
-                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                <li class="nav-item active"><a href='@Url.Action("productos","Home")' class="text-white nav-link hoverli">Productos</a></li>
+                @if (Request.IsAuthenticated && (User.IsInRole("Cliente") || User.IsInRole("Admin")))
                 {
-                    <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
-                    <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Login", "Account")' class="text-white nav-link hoverli">Mis compras</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Index", "Home")' class="text-white nav-link voverli">Carrito</a></li>
                 }
-            </ul>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
+                        <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
+                    }
+                </ul>
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
