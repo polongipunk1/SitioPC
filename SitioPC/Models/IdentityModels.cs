@@ -43,6 +43,7 @@ namespace IdentitySample.Models
         {
             return new ApplicationDbContext();
         }
-        
+
+        public System.Data.Entity.DbSet<SitioPC.Models.productos> productos { get; set; }
     }    
 }

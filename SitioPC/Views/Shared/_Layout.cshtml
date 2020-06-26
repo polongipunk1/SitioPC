@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav mr-auto layout">
                 <li class="nav-item active"><a href='@Url.Action("productos","Home")' class="text-white nav-link hoverli">Productos</a></li>
-                @if (Request.IsAuthenticated && (User.IsInRole("Cliente") || User.IsInRole("Admin")))
+                @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
                 {
                     <li class="nav-item active"><a href='@Url.Action("Login", "Account")' class="text-white nav-link hoverli">Mis compras</a></li>
                     <li class="nav-item active"><a href='@Url.Action("Index", "Home")' class="text-white nav-link voverli">Carrito</a></li>
@@ -31,6 +31,9 @@
                     {
                         <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
                         <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
+                        <li class="nav-item active"><a href='@Url.Action("Index", "productos")' class="text-white nav-link hoverli">Administrar Productos</a></li>
+                        <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Ventas</a></li>
+                        <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Pedidos </a></li>
                     }
                 </ul>
             @Html.Partial("_LoginPartial")

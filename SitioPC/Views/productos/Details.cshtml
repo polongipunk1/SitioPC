@@ -1,0 +1,131 @@
+﻿@model SitioPC.Models.productos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.procesador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.procesador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.graficos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.graficos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pantalla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pantalla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.almacenamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.almacenamiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bateria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bateria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.so)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.so)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.audio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.audio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puertos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puertos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.conectividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.conectividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.existencias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.existencias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.img)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

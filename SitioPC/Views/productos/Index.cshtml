@@ -1,0 +1,112 @@
+﻿@model IEnumerable<SitioPC.Models.productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.procesador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.graficos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pantalla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.almacenamiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bateria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.so)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.audio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puertos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conectividad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.existencias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.procesador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.graficos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ram)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pantalla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.almacenamiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bateria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.so)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.audio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puertos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.conectividad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.existencias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.img)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
