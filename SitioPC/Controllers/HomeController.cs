@@ -29,7 +29,7 @@ namespace IdentitySample.Controllers
         }
 
         [HttpGet, AllowAnonymous]
-        public ActionResult productos()
+        public ActionResult carrito()
         {
             return View();
         }

@@ -263,7 +263,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\estilos.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Img\avatar.png" />
@@ -489,12 +489,13 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_paginador.cshtml" />
-    <Content Include="Views\Home\productos.cshtml" />
+    <Content Include="Views\Home\carrito.cshtml" />
     <Content Include="Views\productos\Create.cshtml" />
     <Content Include="Views\productos\Delete.cshtml" />
     <Content Include="Views\productos\Details.cshtml" />
     <Content Include="Views\productos\Edit.cshtml" />
     <Content Include="Views\productos\Index.cshtml" />
+    <Content Include="Views\productos\Lista.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -5,108 +5,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+    <h2 class="text-white text-center pt-3">Administrar Productos</h2>
+    <div class="pl-2">
+        @Html.ActionLink("Agregar Nuevo Producto", "Create", null, new { @class = "btn btn-success" })
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.procesador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.graficos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ram)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pantalla)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.almacenamiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bateria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.so)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.audio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.puertos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.conectividad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.existencias)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.procesador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.graficos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ram)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pantalla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.almacenamiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bateria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.so)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.audio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.puertos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.conectividad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.existencias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+    <div class="conten-padre pb-5 justify-content-center row row-cols-md-4 flex-md-row w-100">
+        @foreach (var item in Model)
+        {
+            <div class="contenedor ">
+                <div class="carta">
+                    <div class="lado frente">
+                        <img src="@Html.DisplayFor(modelItem => item.img)" alt="">
+                    </div>
+                    <div class="lado atras ficha-tecnica text-white bg-dark">
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.procesador):</b> @Html.DisplayFor(modelItem => item.procesador)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.graficos):</b> @Html.DisplayFor(modelItem => item.graficos)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.ram):</b> @Html.DisplayFor(modelItem => item.ram)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.pantalla):</b> @Html.DisplayFor(modelItem => item.pantalla)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.almacenamiento):</b> @Html.DisplayFor(modelItem => item.almacenamiento)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.bateria):</b> @Html.DisplayFor(modelItem => item.bateria)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.so):</b> @Html.DisplayFor(modelItem => item.so)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.audio):</b> @Html.DisplayFor(modelItem => item.audio)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.puertos):</b> @Html.DisplayFor(modelItem => item.puertos)</p>
+                        <p><b class="text-success">@Html.DisplayNameFor(model => model.conectividad):</b> @Html.DisplayFor(modelItem => item.conectividad)</p>
+                    </div>
+                </div>
+                <div class="etiqueta">
+                    <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                    <h5 class="precio-producto"> @Html.DisplayFor(modelItem => item.precio) MX</h5>
+                    <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-success" })
+                    @Html.ActionLink("Detalle", "Details", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-info" })
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-danger" })
+                </div>
+            </div>                                        
+        }
+    </div>

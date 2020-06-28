@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SitioPC.Models.productos>
+
+@{
+    ViewBag.Title = "Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="filtro">
+    <ul>
+        <li><img src="~/img/pc-filtro.PNG" alt=""></li>
+        <li><img src="~/img/gamer-filtro.PNG" alt=""></li>
+        <li><img src="~/img/laptop-filtro.PNG" alt=""></li>
+    </ul>
+</div>
+
+<div class="conten-padre pb-5 justify-content-center row row-cols-md-4 flex-md-row w-100">
+    @foreach (var item in Model)
+    {
+        <div class="contenedor ">
+            <div class="carta">
+                <div class="lado frente">
+                    <img src="@Html.DisplayFor(modelItem => item.img)" alt="">
+                </div>
+                <div class="lado atras ficha-tecnica text-white bg-dark">
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.procesador):</b> @Html.DisplayFor(modelItem => item.procesador)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.graficos):</b> @Html.DisplayFor(modelItem => item.graficos)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.ram):</b> @Html.DisplayFor(modelItem => item.ram)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.pantalla):</b> @Html.DisplayFor(modelItem => item.pantalla)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.almacenamiento):</b> @Html.DisplayFor(modelItem => item.almacenamiento)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.bateria):</b> @Html.DisplayFor(modelItem => item.bateria)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.so):</b> @Html.DisplayFor(modelItem => item.so)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.audio):</b> @Html.DisplayFor(modelItem => item.audio)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.puertos):</b> @Html.DisplayFor(modelItem => item.puertos)</p>
+                    <p><b class="text-success">@Html.DisplayNameFor(model => model.conectividad):</b> @Html.DisplayFor(modelItem => item.conectividad)</p>
+                </div>
+            </div>
+            <div class="etiqueta">
+                <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                <h5 class="precio-producto"> @Html.DisplayFor(modelItem => item.precio) MX</h5>
+                <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
+                <input class="input-group-sm" type="number" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">
+                <button class="btn btn-primary" type="submit" title="Agregar al carrito">COMPRAR</button>
+            </div>
+        </div>
+    }
+</div>

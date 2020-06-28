@@ -5,127 +5,101 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+    <div class="p-3 text-white">
+        <h2>Detalle del producto</h2>
 
-<div>
-    <h4>productos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+        <div>
+            <dl class="p-3">
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.nombre):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.nombre)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.procesador)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.procesador):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.procesador)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.procesador)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.graficos)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.graficos):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.graficos)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.graficos)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ram)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.ram):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ram)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.ram)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.pantalla)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.pantalla):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.pantalla)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.pantalla)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.almacenamiento)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.almacenamiento):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.almacenamiento)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.almacenamiento)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.bateria)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.bateria):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.bateria)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.bateria)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.so)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.so):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.so)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.so)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.audio)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.audio):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.audio)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.audio)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.puertos)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.puertos):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.puertos)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.puertos)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.conectividad)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.conectividad):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.conectividad)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.conectividad)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.precio)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.precio):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.precio)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.precio)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.existencias)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.existencias):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.existencias)
-        </dd>
+                <dd>@Html.DisplayFor(model => model.existencias)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.img)
-        </dt>
+                <dt class="text-danger float-left pr-3">
+                    @Html.DisplayNameFor(model => model.img):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.img)
-        </dd>
+                <dd><img src="@Html.DisplayFor(model => model.img)" alt="" style="width:70px"></dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <div class="">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-outline-warning" })
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-info" })
+        </div>
+    </div>
+
+

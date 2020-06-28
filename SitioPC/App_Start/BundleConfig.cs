@@ -23,7 +23,7 @@ namespace IdentitySample
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/estilos.css",                      
+                      "~/Content/styles.css",                      
                       "~/Content/bootstrap.css"));
         }
     }

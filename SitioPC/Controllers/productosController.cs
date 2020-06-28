@@ -16,7 +16,7 @@ namespace SitioPC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: productos
+        // GET: productos        
         public ActionResult Index()
         {
             return View(db.productos.ToList());
@@ -124,6 +124,12 @@ namespace SitioPC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Lista()
+        {
+            return View(db.productos.ToList());
         }
     }
 }
