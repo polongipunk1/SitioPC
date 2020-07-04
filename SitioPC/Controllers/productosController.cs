@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using IdentitySample.Models;
 using SitioPC.Models;
+using System.Web.Helpers;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace SitioPC.Controllers
 {
@@ -18,6 +22,13 @@ namespace SitioPC.Controllers
 
         // GET: productos        
         public ActionResult Index()
+        {          
+            return View(db.productos.ToList());
+        }
+
+        // GET: Lista
+        [AllowAnonymous]
+        public ActionResult Lista()
         {
             return View(db.productos.ToList());
         }
@@ -50,6 +61,26 @@ namespace SitioPC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,nombre,procesador,graficos,ram,pantalla,almacenamiento,bateria,so,audio,puertos,conectividad,precio,existencias,img")] productos productos)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase.ContentLength == 0)
+            {
+                ModelState.AddModelError("Imagen","Seleccione una imagen para el producto");
+            }
+            else
+            {
+                if (FileBase.FileName.EndsWith(".png") || FileBase.FileName.EndsWith(".PNG"))
+                {
+                    WebImage image = new WebImage(FileBase.InputStream);
+                    productos.img = image.GetBytes();
+                }
+                else
+                {
+                    ModelState.AddModelError("Imagen", "Solo se admiten imagenes con formato .png");
+                }
+                
+            }            
+
             if (ModelState.IsValid)
             {
                 db.productos.Add(productos);
@@ -82,8 +113,30 @@ namespace SitioPC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,nombre,procesador,graficos,ram,pantalla,almacenamiento,bateria,so,audio,puertos,conectividad,precio,existencias,img")] productos productos)
         {
+            //byte[] imagenActual = null;
+            productos _productos = new productos();
+
+            HttpPostedFileBase FileBase = Request.Files[0];
+            if (FileBase.ContentLength == 0)
+            {
+                _productos = db.productos.Find(productos.Id);
+                productos.img = _productos.img;
+            }else
+            {
+                if (FileBase.FileName.EndsWith(".png") || FileBase.FileName.EndsWith(".PNG"))
+                {
+                    WebImage image = new WebImage(FileBase.InputStream);
+                    productos.img = image.GetBytes();
+                }
+                else
+                {
+                    ModelState.AddModelError("Imagen", "Solo se admiten imagenes con formato .png");
+                }
+            }
+
             if (ModelState.IsValid)
             {
+                db.Entry(_productos).State = EntityState.Detached;
                 db.Entry(productos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -127,9 +180,19 @@ namespace SitioPC.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Lista()
+        public ActionResult getImage(int? id)
         {
-            return View(db.productos.ToList());
+            productos productoK = db.productos.Find(id);
+            byte[] byteImage = productoK.img;
+
+            MemoryStream memoryStream = new MemoryStream(byteImage);
+            Image image = Image.FromStream(memoryStream);
+
+            memoryStream = new MemoryStream();
+            image.Save(memoryStream, ImageFormat.Png);
+            memoryStream.Position = 0;
+
+            return File(memoryStream,"image/png");
         }
     }
 }

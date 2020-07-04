@@ -20,7 +20,7 @@
         <div class="contenedor ">
             <div class="carta">
                 <div class="lado frente">
-                    <img src="@Html.DisplayFor(modelItem => item.img)" alt="">
+                    <img src="@Url.Action("getImage","productos",new { id=item.Id})" />
                 </div>
                 <div class="lado atras ficha-tecnica text-white bg-dark">
                     <p><b class="text-success">@Html.DisplayNameFor(model => model.procesador):</b> @Html.DisplayFor(modelItem => item.procesador)</p>

@@ -39,7 +39,7 @@ namespace SitioPC.Models
         public string bateria { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        [Display(Name = "SO")]
+        [Display(Name = "Sistema Operativo")]
         public string so { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -61,10 +61,9 @@ namespace SitioPC.Models
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Existencias")]
         public string existencias { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
+        
         [Display(Name = "Img")]
-        public string img { get; set; }
+        public byte[] img { get; set; }
 
     }
 }

@@ -93,7 +93,7 @@
                 @Html.DisplayNameFor(model => model.img):
             </dt>
 
-            <dd><img src="@Html.DisplayFor(model => model.img)" alt="" style="width:70px"></dd>
+            <dd><img class="w-25" src="@Url.Action("getImage","productos",new { id=Model.Id})" /></dd>
 
         </dl>
 
