@@ -489,7 +489,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_paginador.cshtml" />
-    <Content Include="Views\Home\carrito.cshtml" />
     <Content Include="Views\productos\Create.cshtml" />
     <Content Include="Views\productos\Delete.cshtml" />
     <Content Include="Views\productos\Details.cshtml" />

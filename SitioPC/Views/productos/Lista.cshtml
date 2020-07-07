@@ -37,7 +37,7 @@
             </div>
             <div class="etiqueta">
                 <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
-                <h5 class="precio-producto"> @Html.DisplayFor(modelItem => item.precio) MX</h5>
+                <h5 class="precio-producto"> @String.Format("{0:C}",item.precio) MX</h5>
                 <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
                 <input class="input-group-sm" type="number" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">
                 <button class="btn btn-primary" type="submit" title="Agregar al carrito">COMPRAR</button>

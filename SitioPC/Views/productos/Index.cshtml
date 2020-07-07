@@ -33,7 +33,7 @@
                 </div>
                 <div class="etiqueta">
                     <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
-                    <h5 class="precio-producto"> @Html.DisplayFor(modelItem => item.precio) MX</h5>
+                    <h5 class="precio-producto">@String.Format("{0:C}", item.precio) MX</h5>
                     <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
                     @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-success" })
                     @Html.ActionLink("Detalle", "Details", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-info" })
