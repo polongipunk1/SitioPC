@@ -43,28 +43,7 @@ namespace SitioPC.Controllers
         //Agregar productos a la lista de carrito
         [HttpGet]
         public ActionResult AgregaCarrito()
-        {
-            /*if (Session["carrito"] == null)
-            {
-                List<CarritoItem> compras = new List<CarritoItem>();
-                compras.Add(new CarritoItem(db.productos.Find(id), 1));
-                Session["carrito"] = compras;
-            }
-            else
-            {
-                List<CarritoItem> compras = (List<CarritoItem>)Session["carrito"];
-                int IndexExistente = getIndex(id);
-                if (IndexExistente==-1)
-                {
-                    compras.Add(new CarritoItem(db.productos.Find(id), 1));
-                }
-                else
-                {
-                    compras[IndexExistente].Cantidad++;
-                    Session["carrito"] = compras;
-                }
-                
-            }*/
+        {           
             return View();
         }
 
@@ -98,12 +77,6 @@ namespace SitioPC.Controllers
                                                precio = producto.Producto.precio,
                                                subtotal = producto.Cantidad * producto.Producto.precio                                               
                                            }).ToList();
-
-                /*product.existencias = (from producto in compras
-                                       select new productos
-                                       {
-                                           existencias = producto.Producto.existencias - producto.Cantidad
-                                       });*/
 
                 db.venta.Add(nuevaVenta);                
                 db.SaveChanges();

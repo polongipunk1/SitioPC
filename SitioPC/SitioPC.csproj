@@ -504,9 +504,7 @@
     <Content Include="Views\productos\Lista.cshtml" />
     <Content Include="Views\Carrito\AgregaCarrito.cshtml" />
     <Content Include="Views\Carrito\FinalizaCompra.cshtml" />
-    <Content Include="Views\venta\Delete.cshtml" />
     <Content Include="Views\venta\Details.cshtml" />
-    <Content Include="Views\venta\Edit.cshtml" />
     <Content Include="Views\venta\Index.cshtml" />
     <Content Include="Views\venta\MisCompras.cshtml" />
     <None Include="Web.Debug.config">
