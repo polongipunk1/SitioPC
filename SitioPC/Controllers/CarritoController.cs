@@ -31,9 +31,10 @@ namespace SitioPC.Controllers
                 { 
                     compras.Add(new CarritoItem(db.productos.Find(id), cantidad));
                 }
-                else { 
+                else 
+                { 
                     compras[IndexExistente].Cantidad += cantidad;
-                Session["carrito"] = compras;
+                    Session["carrito"] = compras;
                 }
             }
             return Json(new { response = true }, JsonRequestBehavior.AllowGet);
