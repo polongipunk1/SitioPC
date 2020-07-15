@@ -17,10 +17,10 @@
 <div class="conten-padre pb-5 justify-content-center row row-cols-md-4 flex-md-row w-100">
     @foreach (var item in Model)
     {
-        <div class="contenedor ">
+        <div class="contenedor">
             <div class="carta">
                 <div class="lado frente">
-                    <img src="@Url.Action("getImage","productos",new { id=item.Id})" />
+                    <img src="@Url.Action("getImage", "productos", new { id = item.Id })" />
                 </div>
                 <div class="lado atras ficha-tecnica text-white bg-dark">
                     <p><b class="text-success">@Html.DisplayNameFor(model => model.procesador):</b> @Html.DisplayFor(modelItem => item.procesador)</p>
@@ -37,11 +37,56 @@
             </div>
             <div class="etiqueta">
                 <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
-                <h5 class="precio-producto"> @String.Format("{0:C}",item.precio) MX</h5>
+                <h5 class="precio-producto"> @String.Format("{0:C}", item.precio) MX</h5>
                 <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
-                <input class="input-group-sm" type="number" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">
-                <button class="btn btn-primary" type="submit" title="Agregar al carrito">COMPRAR</button>
+                <input class="input-group-sm numbers" type="number" id="quantity" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">
+                <a href="#" class="agregar btn btn-primary" title="add to shopping car">Agregar</a>  
+                <h6 id="id">@item.Id</h6>
+                @*Html.ActionLink("Agregar", "AgregaCarrito", "Carrito", new { Id = item.Id }, new { @class = "btn btn-primary" })*@
             </div>
         </div>
     }
 </div>
+
+@section Scripts
+{
+            <script>
+            $(function () {
+                $(".agregar").on("click", function (event){
+                    event.preventDefault();
+                    var ProductoId = $(this).parent().find("h6").text();
+                    var cantidad = $(this).parent().find("input").val();
+
+            $.ajax(
+                {
+                    url: "@Url.Action("AgregaCarrito", "Carrito")",
+                    data:  { id: ProductoId, cantidad: cantidad },
+                    type: "post",
+                    success: function (response) {
+                        window.location.href="@Url.Action("AgregaCarrito", "Carrito")";
+                    },
+                    error:function(err,error)
+                    {
+                        alert(error);
+                    }
+                }
+                );
+        });
+        $(".numbers").keydown(function (e) {
+
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 40]) !== -1 ||
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    return;
+                }
+
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+            </script>
+        }
+  
+
+

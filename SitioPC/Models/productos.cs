@@ -56,7 +56,7 @@ namespace SitioPC.Models
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Precio")]
-        public decimal? precio { get; set; }
+        public decimal precio { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Existencias")]

@@ -1,0 +1,43 @@
+﻿@model SitioPC.Models.venta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="p-2 text-white">
+        <h2 class="text-center pt-3 pb-2">Detalle de la compra</h2>
+        <table class="table table-hover table-responsive-sm table-striped table-light table-borderless table-sm">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ventadetalle != null)
+                {
+                    foreach (var lista in Model.ventadetalle)
+                    {
+                        <tr>
+                            <td>@lista.nombre</td>
+                            <td>@String.Format("{0:C}", lista.precio)</td>
+                            <td>@lista.cantidad</td>
+                            <td>@String.Format("{0:C}", lista.subtotal)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @if (!User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Regresar", "MisCompras", "venta", null, new { @class = "btn btn-outline-info" })
+        }
+        else
+        {
+            @Html.ActionLink("Regresar", "Index", "venta", null, new { @class = "btn btn-outline-info" })
+        }
+    </div>
+

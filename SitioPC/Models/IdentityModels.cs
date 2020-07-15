@@ -45,5 +45,8 @@ namespace IdentitySample.Models
         }
 
         public System.Data.Entity.DbSet<SitioPC.Models.productos> productos { get; set; }
+
+        public System.Data.Entity.DbSet<SitioPC.Models.venta> venta { get; set; }
+        public System.Data.Entity.DbSet<SitioPC.Models.ventadetalle> ventasdetalle { get; set; }        
     }    
 }

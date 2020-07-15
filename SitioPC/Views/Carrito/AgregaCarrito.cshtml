@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "AgregaCarrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="p-2 text-white">
+        <h2 class="text-center pt-3">Carrito de Compras</h2>
+        <table class="table table-hover table-responsive-sm table-striped table-light table-borderless table-sm">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    double total = 0;
+                }
+                @if (Session["carrito"] != null)
+                {
+                    foreach (var item in Session["carrito"] as List<SitioPC.Models.CarritoItem>)
+                    {
+                        total += (double)(item.Cantidad * item.Producto.precio);
+                        <tr>
+                            <td>@item.Producto.nombre</td>
+                            <td>@String.Format("{0:C}", item.Producto.precio)</td>
+                            <td>@item.Cantidad</td>
+                            <td>@String.Format("{0:C}", (item.Cantidad * item.Producto.precio))</td>
+                            <td>@Html.ActionLink("Eliminar", "Delete", "Carrito", new { Id = item.Producto.Id }, new { @class = "btn btn-outline-danger btn-sm" })</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">Total</th>
+                    <th>@String.Format("{0:C}", total)</th>
+                </tr>
+            </tfoot>
+        </table>
+        @Html.ActionLink("Seguir comprando", "Lista", "productos", null, new { @class = "btn btn-outline-info" })
+        @Html.ActionLink("Finalizar compra", "FinalizaCompra", "Carrito", null, new { @class = "btn btn-success" })   
+    </div>
+
