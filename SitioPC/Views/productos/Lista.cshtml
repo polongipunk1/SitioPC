@@ -17,6 +17,7 @@
 <div class="conten-padre pb-5 justify-content-center row row-cols-md-4 flex-md-row w-100">
     @foreach (var item in Model)
     {
+        if (item.existencias != 0) {
         <div class="contenedor">
             <div class="carta">
                 <div class="lado frente">
@@ -38,13 +39,15 @@
             <div class="etiqueta">
                 <h5 class="nom-producto">@Html.DisplayFor(modelItem => item.nombre)</h5>
                 <h5 class="precio-producto"> @String.Format("{0:C}", item.precio) MX</h5>
-                <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>
-                <input class="input-group-sm numbers" type="number" id="quantity" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">
-                <a href="#" class="agregar btn btn-primary" title="add to shopping car">Agregar</a>  
+                <h3 class="existencias">@Html.DisplayFor(modelItem => item.existencias)</h3><h3 class="existencias"> Existencias</h3><br>                
+                    <input class="input-group-sm numbers" type="number" id="quantity" value="1" min="1" max="@Html.DisplayFor(modelItem => item.existencias)">          
+                    <a href="#" class="agregar btn btn-primary" title="add to shopping car">Agregar</a>
+                              
                 <h6 id="id">@item.Id</h6>
                 @*Html.ActionLink("Agregar", "AgregaCarrito", "Carrito", new { Id = item.Id }, new { @class = "btn btn-primary" })*@
             </div>
         </div>
+        } 
     }
 </div>
 

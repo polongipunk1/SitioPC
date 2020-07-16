@@ -67,7 +67,7 @@ namespace SitioPC.Controllers
                 venta nuevaVenta = new venta();                
                 nuevaVenta.fecha = DateTime.Now;
                 nuevaVenta.ApplicationUserId = User.Identity.GetUserId();
-                nuevaVenta.total = compras.Sum(x => x.Producto.precio * x.Cantidad);                
+                nuevaVenta.total = compras.Sum(x => x.Producto.precio * x.Cantidad);                                
 
                 nuevaVenta.ventadetalle = (from producto in compras
                                            select new ventadetalle
@@ -80,7 +80,7 @@ namespace SitioPC.Controllers
                                            }).ToList();
 
                 db.venta.Add(nuevaVenta);                
-                db.SaveChanges();
+                db.SaveChanges();                                
                 Session["carrito"] = new List<CarritoItem>();
             }
 

@@ -60,7 +60,7 @@ namespace SitioPC.Models
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Existencias")]
-        public string existencias { get; set; }
+        public int existencias { get; set; }
         
         [Display(Name = "Img")]
         public byte[] img { get; set; }
