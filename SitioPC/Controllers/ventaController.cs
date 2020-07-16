@@ -29,12 +29,12 @@ namespace SitioPC.Controllers
         {
             var usrId = User.Identity.GetUserId();
             var cm = db.venta.Where(x => x.ApplicationUserId == usrId);
-            return View(cm.ToList());
+            return View(cm.ToList().OrderBy(x => x.fecha));
         }
  
         // GET: ventas/Details/5
         public ActionResult Details(int? id)
-        {
+        {            
             return View(db.venta.Find(id));
         }        
         }
