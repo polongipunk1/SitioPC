@@ -13,7 +13,8 @@
                 <th>No.Registro</th>
                 <th>Fecha de Venta</th>
                 <th>Id del usuario</th>
-                <th>Total</th>
+                <th>Usuario</th>
+                <th>Totaal</th>
                 <th></th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                         <td>@item.Id</td>
                         <td>@item.fecha</td>
                         <td>@item.ApplicationUserId</td>
+                        <td>@item.ApplicationUserName</td>
                         <td>@String.Format("{0:C}", item.total)</td>
                         <th>@Html.ActionLink("Detalles", "Details", "venta", new { Id = @item.Id }, null)</th>
                     </tr>

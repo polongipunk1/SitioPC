@@ -19,7 +19,7 @@ namespace SitioPC.Models
         public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
         public decimal? total { get; set; }
-
+        public string ApplicationUserName { get; set; }
         public virtual ICollection<ventadetalle> ventadetalle { get; set; }
     }
 }
