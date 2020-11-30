@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-    <div class="p-2 text-white">
-        <h2 class="text-center pt-3">Usuarios</h2>
+<div class="p-2 text-white">
+    <h2 class="text-center pt-3">Usuarios</h2>
 
-        <div class="pb-2">
-            @Html.ActionLink("Crear usuario", "Create", null, new { @class = "btn btn-success" })
-        </div>
-        <table class="table table-hover table-responsive-sm table-striped table-light table-borderless table-sm">
+    <div class="pb-2">
+        @Html.ActionLink("Crear usuario", "Create", null, new { @class = "btn btn-success" })
+    </div>  
+    <table class="table table-hover table-responsive-sm table-striped table-secondary table-borderless table-sm" id="tableUsuarios">
+        <thead class="thead-dark">
             <tr>
                 <th>
                     @*Html.DisplayNameFor(model => model.UserName)*@
@@ -27,7 +28,8 @@
 
                 </th>
             </tr>
-
+        </thead>
+        <tbody>
             @foreach (var item in Model.Personas)
             {
                 <tr>
@@ -44,15 +46,52 @@
                     <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
                     <td>
                         @*Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-outline-success" })*@
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-outline-success" })*@
                         @Html.ActionLink("Detalle", "Details", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-outline-info" })
                         @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = " text-decoration-none btn-sm btn-outline-danger" })
                     </td>
                 </tr>
             }
-
-        </table>
-        @{Html.RenderPartial("_paginador", Model);}
-    </div>
+        </tbody>
+    </table>
+    @*{Html.RenderPartial("_paginador", Model);}*@
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function(){
+					$('#tableUsuarios').DataTable({
+						"language": idioma_español
+					});
+				});
+				var idioma_español = {
+					"sProcessing":     "Procesando...",
+					"sLengthMenu":     "Mostrar _MENU_ registros",
+					"sZeroRecords":    "No se encontraron resultados",
+					"sEmptyTable":     "Ningún dato disponible en esta tabla",
+					"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+					"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+					"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+					"sInfoPostFix":    "",
+					"sSearch":         "Buscar:",
+					"sUrl":            "",
+					"sInfoThousands":  ",",
+					"sLoadingRecords": "Cargando...",
+					"oPaginate": {
+						"sFirst":    "Primero",
+						"sLast":     "Último",
+						"sNext":     "Siguiente",
+						"sPrevious": "Anterior"
+					},
+					"oAria": {
+						"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+						"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+					},
+					"buttons": {
+						"copy": "Copiar",
+						"colvis": "Visibilidad"
+					}
+				}
+    </script>
+}

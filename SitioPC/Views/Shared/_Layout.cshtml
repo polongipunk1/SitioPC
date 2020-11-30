@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <title>MundoPC</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/styles.css")    
+    @Styles.Render("~/Content/styles.css")
     @Styles.Render("~/Img/png")
     @Styles.Render("~/Img/jpg")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body class="fondo-body">  
+<body class="fondo-body">
     <nav class="navbar navbar-expand-xl navbar-dark text-white sticky-top bgnav">
         <a href='@Url.Action("Index","Home")' class="navbar-brand text-white font-weight-bold shadow-logo text-danger">MundoPC</a>
         <button class="navbar-toggler btn-outline-secondary" data-target="#menu" data-toggle="collapse" type="button">
@@ -26,23 +28,23 @@
                     <li class="nav-item active"><a href='@Url.Action("Lista", "productos")' class="text-white nav-link hoverli">Productos</a></li>
                     if (Session["carrito"] != null)
                     {
-                    <li class="nav-item active"><a href='@Url.Action("AgregaCarrito", "Carrito")' class="text-white nav-link voverli">Carrito</a></li>
+                        <li class="nav-item active"><a href='@Url.Action("AgregaCarrito", "Carrito")' class="text-white nav-link voverli">Carrito</a></li>
                     }
                 }
-                    @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
-                    {
-                        <li class="nav-item active"><a href='@Url.Action("MisCompras", "venta")' class="text-white nav-link hoverli">Mis compras</a></li>
+                @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
+                {
+                    <li class="nav-item active"><a href='@Url.Action("MisCompras", "venta")' class="text-white nav-link hoverli">Mis compras</a></li>
 
-                    }
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
-                        <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
-                        <li class="nav-item active"><a href='@Url.Action("Index", "productos")' class="text-white nav-link hoverli">Administrar Productos</a></li>
-                        <li class="nav-item active"><a href='@Url.Action("Index", "venta")' class="text-white nav-link hoverli">Administrar Ventas</a></li>
-                        @*<li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Pedidos </a></li>*@
-                    }
-                </ul>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Index", "productos")' class="text-white nav-link hoverli">Administrar Productos</a></li>
+                    <li class="nav-item active"><a href='@Url.Action("Index", "venta")' class="text-white nav-link hoverli">Administrar Ventas</a></li>
+                    @*<li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Pedidos </a></li>*@
+                }
+            </ul>
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
@@ -53,8 +55,11 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")    
     @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
