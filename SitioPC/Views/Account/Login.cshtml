@@ -26,7 +26,8 @@
                                 </div>
                             </div>
                             <div class="mb-2">
-                                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                <label class="control-label">Contraseña</label>
+                                @*Html.LabelFor(m => m.Password, new { @class = "control-label" })*@
                                 <div class="col-md-12 mb-1">
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control text-center font-weight-bold", @placeholder = "Ingrese su contraseña" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />    
     <title>MundoPC</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/styles.css")
@@ -25,23 +25,23 @@
             <ul class="navbar-nav mr-auto layout">
                 @if (!User.IsInRole("Admin"))
                 {
-                    <li class="nav-item active"><a href='@Url.Action("Lista", "productos")' class="text-white nav-link hoverli">Productos</a></li>
+                    <li class="nav-item active"><span class="icono fas fa-laptop float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("Lista", "productos")' class="text-white nav-link hoverli float-left mr-2">Productos</a></li>
                     if (Session["carrito"] != null)
                     {
-                        <li class="nav-item active"><a href='@Url.Action("AgregaCarrito", "Carrito")' class="text-white nav-link voverli">Carrito</a></li>
+                        <li class="nav-item active"><span class="icono fas fa-shopping-cart float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("AgregaCarrito", "Carrito")' class="text-white nav-link voverli float-left mr-2">Carrito</a></li>
                     }
                 }
                 @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
                 {
-                    <li class="nav-item active"><a href='@Url.Action("MisCompras", "venta")' class="text-white nav-link hoverli">Mis compras</a></li>
+                    <li class="nav-item active"><span class="icono fas fa-truck float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("MisCompras", "venta")' class="text-white nav-link hoverli float-left">Mis compras</a></li>
 
                 }
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <li class="nav-item active"><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli">Adminstrar Roles</a></li>
-                    <li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Administrar Usuarios</a></li>
-                    <li class="nav-item active"><a href='@Url.Action("Index", "productos")' class="text-white nav-link hoverli">Administrar Productos</a></li>
-                    <li class="nav-item active"><a href='@Url.Action("Index", "venta")' class="text-white nav-link hoverli">Administrar Ventas</a></li>
+                    <li class="nav-item active"><span class="icono fas fa-users float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("Index", "RolesAdmin")' class="text-white nav-link hoverli float-left mr-2">Adminstrar Roles</a></li>
+                    <li class="nav-item active"><span class="icono fas fa-user-cog float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli float-left mr-2">Administrar Usuarios</a></li>
+                    <li class="nav-item active"><span class="icono fas fa-desktop float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("Index", "productos")' class="text-white nav-link hoverli float-left mr-2">Administrar Productos</a></li>
+                    <li class="nav-item active"><span class="icono fas fas fa-tags float-left mt-2 mr-1" style="font-size: 20px;"></span><a href='@Url.Action("Index", "venta")' class="text-white nav-link hoverli float-left mr-2">Administrar Ventas</a></li>
                     @*<li class="nav-item active"><a href='@Url.Action("Index", "UsersAdmin")' class="text-white nav-link hoverli">Pedidos </a></li>*@
                 }
             </ul>
