@@ -7,7 +7,8 @@
                 @Html.AntiForgeryToken()
 
                
-                        @Html.ActionLink("Hola " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new {@class = "navbar-right text-white btn btn-outline-info",  title = "Administrar cuenta" })
+                        @*Html.ActionLink("Hola " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new {@class = "navbar-right text-white btn btn-outline-info",  title = "Administrar cuenta" })*@
+                <button class="navbar-right text-white btn btn-outline-info" disabled>Hola @User.Identity.GetUserName()</button>
                     
                     <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-outline-danger text-white" title="Cerrar sesión">Cerrar sesión</a>
                 
